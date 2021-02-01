@@ -1,0 +1,36 @@
+﻿@model List<klassycafe.Models.CHEF>
+
+<section class="section" id="chefs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4 text-center">
+                <div class="section-heading">
+                    <h6>Our Chefs</h6>
+                    <h2>We offer the best ingredients for you</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var c in Model)
+            {
+                <div class="col-lg-4">
+                    <div class="chef-item">
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                            <ul class="social-icons">
+                                <li><a href="@c.FACEBOOK"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="@c.TWITTER"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="@c.INSTAGRAM"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                            <img src="~/Content/images/chef/@c.PICTURE" alt="@c.NAME">
+                        </div>
+                        <div class="down-content">
+                            <h4>@c.NAME</h4>
+                            <span>@c.TITLE</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

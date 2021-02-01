@@ -1,0 +1,72 @@
+﻿@model klassycafe.Models.MENUITEM
+@{
+    ViewBag.Title = "EditMenuItem";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                <h5>Add Menü Item</h5>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        @using (Html.BeginForm("EditMenuItemForm", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label>State</label>
+                                        @Html.DropDownList("STATE_ID", null, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Category</label>
+                                        @Html.DropDownList("MENUCATEGORY_ID", null, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>NAME</label>
+                                        @Html.TextBoxFor(model => model.NAME, new { @class = "form-control", type = "text", placeholder = "Name" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>ITEM PICTURE</label><br />
+                                        <img src="~/Content/images/menuitem/@Model.IMAGE" class="mb-2"/>
+                                        <input type="file" name="IMAGE" accept="image/*" /><br />
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>SHOW AT MENU SLIDE</label>
+                                        @Html.EditorFor(model => model.MENUSLIDER_SHOW, new { @class = "form-control", type = "checkbox" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label>Price</label>
+                                        @Html.TextBoxFor(model => model.PRICE, new { @class = "form-control", type = "text", placeholder = "Price", pattern = "[0-9]+([\\.,][0-9]+)?" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>DESCRIPTON</label>
+                                        @Html.TextAreaFor(model => model.DESCRIPTION, new { @class = "form-control", type = "text", placeholder = "Description", rows = "8" })
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-12 justify-content-end">
+                                    <div class="form-group mb-3">
+                                        @Html.HiddenFor(model => model.ID)
+                                        <button type="submit" class="btn btn-success">SAVE</button>
+                                        <a href="/menu-items" class="btn btn-danger">CANCEL</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

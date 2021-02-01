@@ -1,0 +1,37 @@
+﻿@model List<klassycafe.Models.RESERVATIONLIST>
+
+<div class="row">
+    <div class="col-6">
+        <h5>Todays Reservations</h5>
+    </div>
+</div>
+<hr />
+<div class="table-responsive">
+    <table class="table table-sm table-hover" id="exampleToday">
+        <thead>
+            <tr>
+                <th>State</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Guest Count</th>
+                <th style="text-align: right;">Operations</th>
+            </tr>
+        </thead>
+        <thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.reservationStateName</td>
+                    <td>@item.reservation.NAME</td>
+                    <td>@item.reservation.RESERVATION_DATE</td>
+                    <td>@item.reservation.GUEST_COUNT</td>
+                    <td style="text-align: right;">
+                        <a class="btn btn-primary btn-sm" href="/reservation/@item.reservation.ID" title="Details"><i class="fa fa-ellipsis-h"></i></a>
+                        <a class="btn btn-warning btn-sm" href="/edit-reservation/@item.reservation.ID" title="Edit"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-danger btn-sm" href="/remove-reservation/@item.reservation.ID" title="Remove"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </thead>
+    </table>
+</div>

@@ -1,0 +1,72 @@
+﻿@model klassycafe.Models.RESERVATION
+@{
+    ViewBag.Title = "Reservation_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                <h5>Add Reservation</h5>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        @using (Html.BeginForm("AddReservationForm", "Admin", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label>State</label>
+                                        @Html.DropDownList("RESERVATIONSTATE_ID", null, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Name</label>
+                                        @Html.TextBoxFor(model => model.NAME, new { @class = "form-control", type = "text", placeholder = "Name" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Date</label>
+                                        @Html.TextBoxFor(model => model.RESERVATION_DATE, new { @class = "form-control", type = "datetime-local", placeholder = "Date" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Phone</label>
+                                        @Html.TextBoxFor(model => model.PHONE, new { @class = "form-control", type = "text", placeholder = "Phone" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Email</label>
+                                        @Html.TextBoxFor(model => model.EMAIL, new { @class = "form-control", type = "text", placeholder = "Email" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label>Guest Count</label>
+                                        @Html.TextBoxFor(model => model.GUEST_COUNT, new { @class = "form-control", type = "int", placeholder = "Guest Count" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Guest Message</label>
+                                        @Html.TextAreaFor(model => model.MESSAGE, new { @class = "form-control", type = "text", placeholder = "Guest Message", rows = "4" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Comment</label>
+                                        @Html.TextAreaFor(model => model.COMMENT, new { @class = "form-control", type = "text", placeholder = "Comment", rows = "4" })
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-12 justify-content-end">
+                                    <div class="form-group mb-3">
+                                        <button type="submit" class="btn btn-success">SAVE</button>
+                                        <a href="/reservations" class="btn btn-danger">CANCEL</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

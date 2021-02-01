@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="klassycafedbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHEF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="100" />
+          <Property Name="PICTURE" Type="nvarchar" MaxLength="150" />
+          <Property Name="FACEBOOK" Type="nvarchar" MaxLength="250" />
+          <Property Name="TWITTER" Type="nvarchar" MaxLength="250" />
+          <Property Name="INSTAGRAM" Type="nvarchar" MaxLength="250" />
+          <Property Name="STATE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="CONTACT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="FACEBOOK" Type="nvarchar" MaxLength="150" />
+          <Property Name="TWITTER" Type="nvarchar" MaxLength="150" />
+          <Property Name="LINKEDIN" Type="nvarchar" MaxLength="150" />
+          <Property Name="INSTAGRAM" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="MENUCATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="ICON" Type="nvarchar" MaxLength="50" />
+          <Property Name="STATE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="MENUITEM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="150" />
+          <Property Name="MENUCATEGORY_ID" Type="int" />
+          <Property Name="PRICE" Type="money" />
+          <Property Name="IMAGE" Type="nvarchar" MaxLength="50" />
+          <Property Name="STATE_ID" Type="int" />
+          <Property Name="MENUSLIDER_SHOW" Type="bit" />
+        </EntityType>
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="250" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="50" />
+          <Property Name="GUEST_COUNT" Type="int" />
+          <Property Name="RESERVATION_DATE" Type="datetime" />
+          <Property Name="MESSAGE" Type="nvarchar" MaxLength="250" />
+          <Property Name="RESERVATIONSTATE_ID" Type="int" />
+          <Property Name="COMMENT" Type="nvarchar" MaxLength="250" />
+          <Property Name="CREATED_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RESERVATIONSTATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CHEF_STATE">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="0..1" />
+          <End Role="CHEF" Type="Self.CHEF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CHEF">
+              <PropertyRef Name="STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENUCATEGORY_STATE">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="0..1" />
+          <End Role="MENUCATEGORY" Type="Self.MENUCATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENUCATEGORY">
+              <PropertyRef Name="STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENUITEM_MENUCATEGORY">
+          <End Role="MENUCATEGORY" Type="Self.MENUCATEGORY" Multiplicity="0..1" />
+          <End Role="MENUITEM" Type="Self.MENUITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENUCATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENUITEM">
+              <PropertyRef Name="MENUCATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENUITEM_STATE">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="0..1" />
+          <End Role="MENUITEM" Type="Self.MENUITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENUITEM">
+              <PropertyRef Name="STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVATION_RESERVATIONSTATE">
+          <End Role="RESERVATIONSTATE" Type="Self.RESERVATIONSTATE" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVATIONSTATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="RESERVATIONSTATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="klassycafedbModelStoreContainer">
+          <EntitySet Name="CHEF" EntityType="Self.CHEF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONTACT" EntityType="Self.CONTACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MENUCATEGORY" EntityType="Self.MENUCATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MENUITEM" EntityType="Self.MENUITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESERVATION" EntityType="Self.RESERVATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESERVATIONSTATE" EntityType="Self.RESERVATIONSTATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATE" EntityType="Self.STATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CHEF_STATE" Association="Self.FK_CHEF_STATE">
+            <End Role="STATE" EntitySet="STATE" />
+            <End Role="CHEF" EntitySet="CHEF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENUCATEGORY_STATE" Association="Self.FK_MENUCATEGORY_STATE">
+            <End Role="STATE" EntitySet="STATE" />
+            <End Role="MENUCATEGORY" EntitySet="MENUCATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENUITEM_MENUCATEGORY" Association="Self.FK_MENUITEM_MENUCATEGORY">
+            <End Role="MENUCATEGORY" EntitySet="MENUCATEGORY" />
+            <End Role="MENUITEM" EntitySet="MENUITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENUITEM_STATE" Association="Self.FK_MENUITEM_STATE">
+            <End Role="STATE" EntitySet="STATE" />
+            <End Role="MENUITEM" EntitySet="MENUITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVATION_RESERVATIONSTATE" Association="Self.FK_RESERVATION_RESERVATIONSTATE">
+            <End Role="RESERVATIONSTATE" EntitySet="RESERVATIONSTATE" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="klassycafedbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CHEF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PICTURE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FACEBOOK" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TWITTER" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="INSTAGRAM" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="STATE_ID" Type="Int32" />
+          <NavigationProperty Name="STATE" Relationship="Self.FK_CHEF_STATE" FromRole="CHEF" ToRole="STATE" />
+        </EntityType>
+        <EntityType Name="MENUCATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ICON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATE_ID" Type="Int32" />
+          <NavigationProperty Name="STATE" Relationship="Self.FK_MENUCATEGORY_STATE" FromRole="MENUCATEGORY" ToRole="STATE" />
+          <NavigationProperty Name="MENUITEM" Relationship="Self.FK_MENUITEM_MENUCATEGORY" FromRole="MENUCATEGORY" ToRole="MENUITEM" />
+        </EntityType>
+        <EntityType Name="MENUITEM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MENUCATEGORY_ID" Type="Int32" />
+          <Property Name="PRICE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IMAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATE_ID" Type="Int32" />
+          <Property Name="MENUSLIDER_SHOW" Type="Boolean" />
+          <NavigationProperty Name="MENUCATEGORY" Relationship="Self.FK_MENUITEM_MENUCATEGORY" FromRole="MENUITEM" ToRole="MENUCATEGORY" />
+          <NavigationProperty Name="STATE" Relationship="Self.FK_MENUITEM_STATE" FromRole="MENUITEM" ToRole="STATE" />
+        </EntityType>
+        <EntityType Name="RESERVATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GUEST_COUNT" Type="Int32" />
+          <Property Name="RESERVATION_DATE" Type="DateTime" Precision="3" />
+          <Property Name="MESSAGE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RESERVATIONSTATE_ID" Type="Int32" />
+          <Property Name="COMMENT" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RESERVATIONSTATE" Relationship="Self.FK_RESERVATION_RESERVATIONSTATE" FromRole="RESERVATION" ToRole="RESERVATIONSTATE" />
+          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RESERVATIONSTATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RESERVATION" Relationship="Self.FK_RESERVATION_RESERVATIONSTATE" FromRole="RESERVATIONSTATE" ToRole="RESERVATION" />
+        </EntityType>
+        <EntityType Name="STATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHEF" Relationship="Self.FK_CHEF_STATE" FromRole="STATE" ToRole="CHEF" />
+          <NavigationProperty Name="MENUCATEGORY" Relationship="Self.FK_MENUCATEGORY_STATE" FromRole="STATE" ToRole="MENUCATEGORY" />
+          <NavigationProperty Name="MENUITEM" Relationship="Self.FK_MENUITEM_STATE" FromRole="STATE" ToRole="MENUITEM" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_CHEF_STATE">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="0..1" />
+          <End Role="CHEF" Type="Self.CHEF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CHEF">
+              <PropertyRef Name="STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENUCATEGORY_STATE">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="0..1" />
+          <End Role="MENUCATEGORY" Type="Self.MENUCATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENUCATEGORY">
+              <PropertyRef Name="STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENUITEM_MENUCATEGORY">
+          <End Role="MENUCATEGORY" Type="Self.MENUCATEGORY" Multiplicity="0..1" />
+          <End Role="MENUITEM" Type="Self.MENUITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENUCATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENUITEM">
+              <PropertyRef Name="MENUCATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MENUITEM_STATE">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="0..1" />
+          <End Role="MENUITEM" Type="Self.MENUITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENUITEM">
+              <PropertyRef Name="STATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESERVATION_RESERVATIONSTATE">
+          <End Role="RESERVATIONSTATE" Type="Self.RESERVATIONSTATE" Multiplicity="0..1" />
+          <End Role="RESERVATION" Type="Self.RESERVATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESERVATIONSTATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RESERVATION">
+              <PropertyRef Name="RESERVATIONSTATE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="klassycafeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHEF" EntityType="Self.CHEF" />
+          <EntitySet Name="MENUCATEGORY" EntityType="Self.MENUCATEGORY" />
+          <EntitySet Name="MENUITEM" EntityType="Self.MENUITEM" />
+          <EntitySet Name="RESERVATION" EntityType="Self.RESERVATION" />
+          <EntitySet Name="RESERVATIONSTATE" EntityType="Self.RESERVATIONSTATE" />
+          <EntitySet Name="STATE" EntityType="Self.STATE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="USER" EntityType="Self.USER" />
+          <AssociationSet Name="FK_CHEF_STATE" Association="Self.FK_CHEF_STATE">
+            <End Role="STATE" EntitySet="STATE" />
+            <End Role="CHEF" EntitySet="CHEF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENUCATEGORY_STATE" Association="Self.FK_MENUCATEGORY_STATE">
+            <End Role="STATE" EntitySet="STATE" />
+            <End Role="MENUCATEGORY" EntitySet="MENUCATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENUITEM_MENUCATEGORY" Association="Self.FK_MENUITEM_MENUCATEGORY">
+            <End Role="MENUCATEGORY" EntitySet="MENUCATEGORY" />
+            <End Role="MENUITEM" EntitySet="MENUITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MENUITEM_STATE" Association="Self.FK_MENUITEM_STATE">
+            <End Role="STATE" EntitySet="STATE" />
+            <End Role="MENUITEM" EntitySet="MENUITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESERVATION_RESERVATIONSTATE" Association="Self.FK_RESERVATION_RESERVATIONSTATE">
+            <End Role="RESERVATIONSTATE" EntitySet="RESERVATIONSTATE" />
+            <End Role="RESERVATION" EntitySet="RESERVATION" />
+          </AssociationSet>
+          <EntitySet Name="CONTACT" EntityType="klassycafedbModel.CONTACT" />
+        </EntityContainer>
+        <EntityType Name="CONTACT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FACEBOOK" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TWITTER" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LINKEDIN" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="INSTAGRAM" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="klassycafedbModelStoreContainer" CdmEntityContainer="klassycafeEntities">
+          <EntitySetMapping Name="CHEF">
+            <EntityTypeMapping TypeName="klassycafedbModel.CHEF">
+              <MappingFragment StoreEntitySet="CHEF">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+                <ScalarProperty Name="FACEBOOK" ColumnName="FACEBOOK" />
+                <ScalarProperty Name="TWITTER" ColumnName="TWITTER" />
+                <ScalarProperty Name="INSTAGRAM" ColumnName="INSTAGRAM" />
+                <ScalarProperty Name="STATE_ID" ColumnName="STATE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENUCATEGORY">
+            <EntityTypeMapping TypeName="klassycafedbModel.MENUCATEGORY">
+              <MappingFragment StoreEntitySet="MENUCATEGORY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="ICON" ColumnName="ICON" />
+                <ScalarProperty Name="STATE_ID" ColumnName="STATE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENUITEM">
+            <EntityTypeMapping TypeName="klassycafedbModel.MENUITEM">
+              <MappingFragment StoreEntitySet="MENUITEM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="MENUCATEGORY_ID" ColumnName="MENUCATEGORY_ID" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="STATE_ID" ColumnName="STATE_ID" />
+                <ScalarProperty Name="MENUSLIDER_SHOW" ColumnName="MENUSLIDER_SHOW" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESERVATION">
+            <EntityTypeMapping TypeName="klassycafedbModel.RESERVATION">
+              <MappingFragment StoreEntitySet="RESERVATION">
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="GUEST_COUNT" ColumnName="GUEST_COUNT" />
+                <ScalarProperty Name="RESERVATION_DATE" ColumnName="RESERVATION_DATE" />
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+                <ScalarProperty Name="RESERVATIONSTATE_ID" ColumnName="RESERVATIONSTATE_ID" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESERVATIONSTATE">
+            <EntityTypeMapping TypeName="klassycafedbModel.RESERVATIONSTATE">
+              <MappingFragment StoreEntitySet="RESERVATIONSTATE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATE">
+            <EntityTypeMapping TypeName="klassycafedbModel.STATE">
+              <MappingFragment StoreEntitySet="STATE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="klassycafedbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER">
+            <EntityTypeMapping TypeName="klassycafedbModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTACT">
+            <EntityTypeMapping TypeName="klassycafedbModel.CONTACT">
+              <MappingFragment StoreEntitySet="CONTACT">
+                <ScalarProperty Name="INSTAGRAM" ColumnName="INSTAGRAM" />
+                <ScalarProperty Name="LINKEDIN" ColumnName="LINKEDIN" />
+                <ScalarProperty Name="TWITTER" ColumnName="TWITTER" />
+                <ScalarProperty Name="FACEBOOK" ColumnName="FACEBOOK" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

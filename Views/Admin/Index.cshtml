@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                @Html.Action("_TodaysReservations", "Admin")
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                @Html.Action("_LastReservations", "Admin")
+            </div>
+        </div>
+    </div>
+</div>

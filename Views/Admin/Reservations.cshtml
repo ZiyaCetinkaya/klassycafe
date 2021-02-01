@@ -1,0 +1,53 @@
+﻿@model List<klassycafe.Models.RESERVATIONLIST>
+@{
+    ViewBag.Title = "Reservations";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Reservations</h5>
+                    </div>
+                    <div class="col-6">
+                        <a href="/add-reservation" class="btn btn-sm btn-primary pull-right">New Reservations</a>
+                    </div>
+                </div>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover" id="example">
+                        <thead>
+                            <tr>
+                                <th>State</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Guest Count</th>
+                                <th style="text-align: right;">Operations</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.reservationStateName</td>
+                                    <td>@item.reservation.NAME</td>
+                                    <td>@item.reservation.RESERVATION_DATE</td>
+                                    <td>@item.reservation.GUEST_COUNT</td>
+                                    <td style="text-align: right;">
+                                        <a class="btn btn-primary btn-sm" href="/reservation/@item.reservation.ID" title="Details"><i class="fa fa-ellipsis-h"></i></a>
+                                        <a class="btn btn-warning btn-sm" href="/edit-reservation/@item.reservation.ID" title="Edit"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-danger btn-sm" href="/remove-reservation/@item.reservation.ID" title="Remove"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,60 @@
+﻿@model klassycafe.Models.CHEFLIST
+@{
+    ViewBag.Title = "Chef";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                <h5>Chef Details</h5>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-1">
+                                    <label><b>Chef Picture</b></label><br />
+                                    <img src="~/Content/images/chef/@Model.chef.PICTURE" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-1">
+                                    <label><b>State: </b> @Model.stateName </label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label><b>Title: </b>@Model.chef.TITLE</label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label><b>Name: </b>@Model.chef.NAME</label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label><b>Twitter: </b>@Model.chef.TWITTER</label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label><b>Instagram: </b> @Model.chef.INSTAGRAM</label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label><b>Facebook: </b> @Model.chef.FACEBOOK</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-12 justify-content-end">
+                                <div class="form-group mb-3">
+                                    <a href="/edit-chef/@Model.chef.ID" class="btn btn-success">EDIT</a>
+                                    <a href="/chefs" class="btn btn-danger">CANCEL</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

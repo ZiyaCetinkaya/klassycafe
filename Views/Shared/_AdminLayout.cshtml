@@ -1,0 +1,53 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="~/Content/admin_assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/admin_assets/css/style.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <title>Klassy Cafe - Admin</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row mb-2 py-4">
+            <div class="col-12 text-center">
+                <img src="~/Content/assets/images/klassy-logo.png" class="mb-3" />
+                <p class="m-0 p-0"><strong>Welcome</strong> @Session["UserName"] </p><a href="/logout" class="btn btn-sm btn-danger">Logout</a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Klassy Cafe</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-light" href="/admin">HOME</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-light" href="/reservations">RESERVATIONS</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-light" href="/menu-items">MENU ITEMS</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-light" href="/chefs">CHEFS</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link text-light" href="/contact-info">CONTACT INFO</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        @RenderBody()
+    </div>
+    <script src="~/Content/admin_assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

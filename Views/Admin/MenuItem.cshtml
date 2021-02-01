@@ -1,0 +1,69 @@
+﻿@model klassycafe.Models.MENUITEMLIST
+@{
+    ViewBag.Title = "MenuItem";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                <h5>Menü Item Details</h5>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-1">
+                                    <label><b>Item Picture</b></label><br />
+                                    <img src="~/Content/images/menuitem/@Model.item.IMAGE" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-1">
+                                    <label><b>State: </b> @Model.stateName </label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label><b>Category: </b>@Model.categoryName</label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label><b>NAME: </b>@Model.item.NAME</label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label>
+                                        <b>SHOW AT MENU SLIDE: </b>
+                                        @if (Model.item.MENUSLIDER_SHOW == true)
+                                        {
+                                            <span>SHOW</span>
+                                        }
+                                        else
+                                        {
+                                            <span>DON'T SHOW</span>
+                                        }
+                                    </label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label><b>Price: </b>$@String.Format("{0:0.00}", Model.item.PRICE)</label>
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label><b>DESCRIPTON: </b> @Model.item.DESCRIPTION</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-12 justify-content-end">
+                                <div class="form-group mb-3">
+                                    <a href="/edit-menu-item/@Model.item.ID" class="btn btn-success">EDIT</a>
+                                    <a href="/menu-items" class="btn btn-danger">CANCEL</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

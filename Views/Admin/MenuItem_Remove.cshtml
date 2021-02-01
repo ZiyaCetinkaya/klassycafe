@@ -1,0 +1,63 @@
+﻿@model klassycafe.Models.MENUITEMLIST
+@{
+    ViewBag.Title = "MenuItem_Remove";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                <h5>Remove Menü Item</h5>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        @using (Html.BeginForm("RemoveMenuItemForm", "Admin", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label><b>Item Picture</b></label><br />
+                                        <img src="~/Content/images/menuitem/@Model.item.IMAGE" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label><b>Category: </b>@Model.categoryName</label>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label><b>Name: </b>@Model.item.NAME</label>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label><b>Price: </b>$@String.Format("{0:0.00}", Model.item.PRICE)</label>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label><b>Description: </b> @Model.item.DESCRIPTION</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-12 justify-content-end">
+                                    <div class="form-group mb-1">
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>ARE YOU SURE?</strong>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        @Html.HiddenFor(model => model.item.ID)
+                                        <button type="submit" class="btn btn-success">REMOVE</button>
+                                        <a href="/menu-items" class="btn btn-danger">CANCEL</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

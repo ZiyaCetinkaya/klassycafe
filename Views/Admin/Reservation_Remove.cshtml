@@ -1,0 +1,66 @@
+﻿@model klassycafe.Models.RESERVATION
+@{
+    ViewBag.Title = "Reservation_Remove";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                <h5>Remove Chef</h5>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        @using (Html.BeginForm("RemoveReservationForm", "Admin", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label><b>Name: </b> @Model.NAME</label>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label><b>Date: </b> @Model.RESERVATION_DATE</label>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label><b>Phone: </b> @Model.PHONE</label>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label><b>Email: </b> @Model.EMAIL</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-1">
+                                        <label><b>Guest Count: </b> @Model.GUEST_COUNT</label>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label><b>Guset Message: </b> @Model.MESSAGE </label>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label><b>Comment: </b>@Model.COMMENT</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-12 justify-content-end">
+                                    <div class="form-group mb-1">
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>ARE YOU SURE?</strong>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        @Html.HiddenFor(model => model.ID)
+                                        <button type="submit" class="btn btn-success">REMOVE</button>
+                                        <a href="/reservations" class="btn btn-danger">CANCEL</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

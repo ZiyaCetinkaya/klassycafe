@@ -1,0 +1,68 @@
+﻿@model klassycafe.Models.CHEF
+@{
+    ViewBag.Title = "Chef_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="card border-light">
+            <div class="card-body">
+                <h5>Add Chef</h5>
+                <hr />
+                <div class="row">
+                    <div class="col-md-8">
+                        @using (Html.BeginForm("AddChefForm", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label>State</label>
+                                        @Html.DropDownList("STATE_ID", null, htmlAttributes: new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Title</label>
+                                        @Html.TextBoxFor(model => model.TITLE, new { @class = "form-control", type = "text", placeholder = "Title" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Name</label>
+                                        @Html.TextBoxFor(model => model.NAME, new { @class = "form-control", type = "text", placeholder = "Name" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Chef Picture</label><br />
+                                        <input type="file" name="PICTURE" accept="image/*" required="required" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label>Twitter</label>
+                                        @Html.TextBoxFor(model => model.TWITTER, new { @class = "form-control", type = "text", placeholder = "Twitter" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Facebook</label>
+                                        @Html.TextBoxFor(model => model.FACEBOOK, new { @class = "form-control", type = "text", placeholder = "Facebook" })
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label>Instagram</label>
+                                        @Html.TextBoxFor(model => model.INSTAGRAM, new { @class = "form-control", type = "text", placeholder = "Instagram" })
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-12 justify-content-end">
+                                    <div class="form-group mb-3">
+                                        <button type="submit" class="btn btn-success">SAVE</button>
+                                        <a href="/chefs" class="btn btn-danger">CANCEL</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
