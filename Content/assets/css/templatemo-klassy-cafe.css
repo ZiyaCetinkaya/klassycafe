@@ -898,19 +898,19 @@ about
 
 /*
 ---------------------------------------------
-menu
+preferences
 ---------------------------------------------
 */
 
-#menu {
-  margin-top: 120px;
-  background-color: #fffafa;
-  padding: 120px 0px;
+#preferences {
+    margin-top: 120px;
+    background-color: #fffafa;
+    padding: 120px 0px;
 }
 
-#menu .section-heading {
-  margin-bottom: 80px;
-}
+    #preferences .section-heading {
+        margin-bottom: 80px;
+    }
 
 .card {
   margin: 0 auto;
@@ -967,91 +967,91 @@ menu
   color: #fff;
 }
 
-#menu .price h6 {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  background-color: #fb5849;
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  border-radius: 3px;
-  text-align: center;
-  line-height: 70px;
+#preferences .price h6 {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: #fb5849;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 70px;
 }
 
-#menu .card .main-text-button {
-  margin-left: 30px;
-  margin-top: 20px;
-  padding-bottom: 30px;
+#preferences .card .main-text-button {
+    margin-left: 30px;
+    margin-top: 20px;
+    padding-bottom: 30px;
 }
 
-#menu .owl-menu-item {
-  position: relative;
+#preferences .owl-menu-item {
+    position: relative;
 }
 
-#menu .owl-nav {
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  bottom: -80px;
-  transform: translateY(5px);
+#preferences .owl-nav {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: -80px;
+    transform: translateY(5px);
 }
 
-#menu .owl-dots {
-  display: none;
-}
-    
-#menu .owl-nav .owl-prev{
-  margin-right: 10px;
-  outline: none;
+#preferences .owl-dots {
+    display: none;
 }
 
-#menu .owl-nav .owl-prev span,
-#menu .owl-nav .owl-next span {
-  opacity: 0;
+#preferences .owl-nav .owl-prev {
+    margin-right: 10px;
+    outline: none;
 }
 
-#menu .owl-nav .owl-prev:before {
-  display: inline-block;
-  font-family: 'FontAwesome';
-  color: #fb5849;
-  font-size: 25px;
-  font-weight: 700;
-  content: '\f104';
+    #preferences .owl-nav .owl-prev span,
+    #preferences .owl-nav .owl-next span {
+        opacity: 0;
+    }
+
+    #preferences .owl-nav .owl-prev:before {
+        display: inline-block;
+        font-family: 'FontAwesome';
+        color: #fb5849;
+        font-size: 25px;
+        font-weight: 700;
+        content: '\f104';
+    }
+
+#preferences .owl-nav .owl-prev {
+    opacity: 0.75;
+    transition: all .5s;
 }
 
-#menu .owl-nav .owl-prev {
-  opacity: 0.75;
-  transition: all .5s;
+    #preferences .owl-nav .owl-prev:hover {
+        opacity: 1;
+    }
+
+#preferences .owl-nav .owl-next {
+    opacity: 0.75;
+    transition: all .5s;
 }
 
-#menu .owl-nav .owl-prev:hover {
-  opacity: 1;
+    #preferences .owl-nav .owl-next:hover {
+        opacity: 1;
+    }
+
+#preferences .owl-nav .owl-next {
+    margin-left: 10px;
+    outline: none;
 }
 
-#menu .owl-nav .owl-next {
-  opacity: 0.75;
-  transition: all .5s;
-}
-
-#menu .owl-nav .owl-next:hover {
-  opacity: 1;
-}
-
-#menu .owl-nav .owl-next{
-  margin-left: 10px;
-  outline: none;
-}
-
-#menu .owl-nav .owl-next:before {
-  display: inline-block;
-  font-family: 'FontAwesome';
-  color: #fb5849;
-  font-size: 25px;
-  font-weight: 700;
-  content: '\f105';
-}
+    #preferences .owl-nav .owl-next:before {
+        display: inline-block;
+        font-family: 'FontAwesome';
+        color: #fb5849;
+        font-size: 25px;
+        font-weight: 700;
+        content: '\f105';
+    }
 
 
 /*
@@ -1343,122 +1343,122 @@ reservation
 
 /*
 ---------------------------------------------
-offers
+menu
 ---------------------------------------------
 */
 
-#offers {
+#menu {
   padding-top: 120px;
 }
 
-#offers .section-heading {
-  margin-bottom: 70px;
-}
+    #menu .section-heading {
+        margin-bottom: 70px;
+    }
 
-#offers .section-heading h6 {
-  padding-left: 0px;
-}
+        #menu .section-heading h6 {
+            padding-left: 0px;
+        }
 
-#offers .section-heading h6:before {
-  display: none;
-}
+            #menu .section-heading h6:before {
+                display: none;
+            }
 
-#offers .heading-tabs {
-  text-align: center;
-}
+    #menu .heading-tabs {
+        text-align: center;
+    }
 
-#offers .heading-tabs .main-dark-button {
-  text-align: right;
-}
+        #menu .heading-tabs .main-dark-button {
+            text-align: right;
+        }
 
-#offers #tabs ul {
-  padding: 0;
-}
-#offers #tabs ul li {
-  display: inline-block;
-  margin: 0px 15px;
-}
-#offers #tabs ul li:last-child {
-  margin-right: 0px;
-}
-#offers #tabs ul li:first-child {
-  margin-left: 0px;
-}
-#offers #tabs ul li a {
-  text-transform: capitalize;
-  width: 100%;
-  display: inline-block;
-  font-size: 15px;
-  color: #2a2a2a;
-  font-weight: 600;
-  transition: all 0.3s;
-  text-align: center;
-}
+    #menu #tabs ul {
+        padding: 0;
+    }
+        #menu #tabs ul li {
+            display: inline-block;
+            margin: 0px 15px;
+        }
+            #menu #tabs ul li:last-child {
+                margin-right: 0px;
+            }
+            #menu #tabs ul li:first-child {
+                margin-left: 0px;
+            }
+            #menu #tabs ul li a {
+                text-transform: capitalize;
+                width: 100%;
+                display: inline-block;
+                font-size: 15px;
+                color: #2a2a2a;
+                font-weight: 600;
+                transition: all 0.3s;
+                text-align: center;
+            }
 
-#offers #tabs ul li a img {
-  display: block;
-  margin: 0 auto 15px auto;
-}
-#offers #tabs ul .ui-tabs-active a {
-  color: #fb5849;
-  position: relative;
-}
-#offers #tabs ul .ui-tabs-active span {
-  color: #1e1e1e;
-}
-#offers .tabs-content {
-  margin-top: 60px;
-  text-align: left;
-  display: inline-block;
-  transition: all 0.3s;
-}
-#offers .tabs-content .tab-item {
-  position: relative;
-  margin-bottom: 60px;
-}
-#offers .tabs-content img {
-  float: left;
-  width: 100px;
-  max-width: 100px;
-  margin-right: 20px;
-  border-radius: 5px;
-}
-#offers .tabs-content h4 {
-  padding-top: 10px;
-  font-size: 20px;
-  font-weight: 700;
-  color: #2a2a2a;
-  margin-bottom: 10px;
-  margin-right: 100px;
-}
+                #menu #tabs ul li a img {
+                    display: block;
+                    margin: 0 auto 15px auto;
+                }
+        #menu #tabs ul .ui-tabs-active a {
+            color: #fb5849;
+            position: relative;
+        }
+        #menu #tabs ul .ui-tabs-active span {
+            color: #1e1e1e;
+        }
+    #menu .tabs-content {
+        margin-top: 60px;
+        text-align: left;
+        display: inline-block;
+        transition: all 0.3s;
+    }
+        #menu .tabs-content .tab-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        #menu .tabs-content img {
+            float: left;
+            width: 100px;
+            max-width: 100px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        #menu .tabs-content h4 {
+            padding-top: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #2a2a2a;
+            margin-bottom: 10px;
+            margin-right: 100px;
+        }
 
-#offers .tabs-content p {
-  margin-right: 100px;
-}
+        #menu .tabs-content p {
+            margin-right: 100px;
+        }
 
-#offers .tabs-content .left-list {
-  margin-right: 15px;
-}
+        #menu .tabs-content .left-list {
+            margin-right: 15px;
+        }
 
-#offers .tabs-content .right-list {
-  margin-left: 15px;
-}
+        #menu .tabs-content .right-list {
+            margin-left: 15px;
+        }
 
-#offers .tabs-content .price h6 {
-  position: absolute;
-  top: 15px;
-  right: 0;
-  width: 70px;
-  height: 70px;
-  background-color: #fb5849;
-  display: inline-block;
-  text-align: center;
-  line-height: 70px;
-  border-radius: 3px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-}
+        #menu .tabs-content .price h6 {
+            position: absolute;
+            top: 15px;
+            right: 0;
+            width: 70px;
+            height: 70px;
+            background-color: #fb5849;
+            display: inline-block;
+            text-align: center;
+            line-height: 70px;
+            border-radius: 3px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
 
 
 /* 
