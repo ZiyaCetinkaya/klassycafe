@@ -3,7 +3,7 @@ ASP.Net MVC ile farklı türlerde web sayfalarını, farklı yaklaşımlarla pro
 
 **AMAÇLAR**
 
-Projeye başlarken ki kullanıcı tarafı ve teknik taraftaki amaçlarımı şu şekildeydi sıralayabilirim:
+Projeye başlarken ki kullanıcı ve teknik taraftaki amaçlarımı şu şekilde sıralayabilirim:
 
 1. **Kullanıcı tarafı için amaçlar**
     - Bir kafe için responsive bir web sayfası hazırlamak
@@ -12,7 +12,7 @@ Projeye başlarken ki kullanıcı tarafı ve teknik taraftaki amaçlarımı şu 
     - Müşterilerin web sayfası üzerinden rezervasyon talebinde bulunabilmesini sağlamak
     - Kafe sahibinin menü, şef, iletişim bilgileri ve rezervasyon taleplerini yönetebilmesi için bir CMS(Content Management System) hazırlamak
 2. **Teknik amaçlar**
-    - DB First yaklaşımını kullanarak ASP.NET MMVC projesi gerçekleştirmek
+    - DB First yaklaşımını kullanarak ASP.NET MVC projesi gerçekleştirmek
     - Repository Design Pattern kullanarak CRUD işlemlerini Generic hale getirmek
     - Session yönetimi ile kullanıcı yetki kontrollü login sistemi oluşturmak
     
